@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import tech.anubislas.logintest.entity.Department;
+import tech.anubislas.logintest.error.DepartmentNotFoundException;
 import tech.anubislas.logintest.service.DepartmentService;
 
 @RestController
@@ -38,7 +39,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Department fetchDepartmentByDepartmentId(@PathVariable("id") Integer id){
+    public Department fetchDepartmentByDepartmentId(@PathVariable("id") Integer id) throws DepartmentNotFoundException{
         return departmentService.fetchDepartmentByDepartmentId(id);
     }
 

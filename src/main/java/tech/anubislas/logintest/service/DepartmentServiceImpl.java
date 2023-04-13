@@ -2,11 +2,13 @@ package tech.anubislas.logintest.service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tech.anubislas.logintest.entity.Department;
+import tech.anubislas.logintest.error.DepartmentNotFoundException;
 import tech.anubislas.logintest.repository.DepartmentRepository;
 
 @Service
@@ -28,8 +30,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department fetchDepartmentByDepartmentId(Integer id) {
-        return departmentRepository.findById(id).orElse(null);
+    public Department fetchDepartmentByDepartmentId(Integer id) throws DepartmentNotFoundException {
+        Optional<Department> department = departmentRepository.findById(id);
+        
+        if (!department.isPresent()) {
+            throw new DepartmentNotFoundException("Ce departement nexiste pas");
+        }
+
+        return department.get();
     }
 
     @Override
