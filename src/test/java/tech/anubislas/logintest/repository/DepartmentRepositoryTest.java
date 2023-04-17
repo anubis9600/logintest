@@ -14,10 +14,10 @@ import tech.anubislas.logintest.entity.Department;
 public class DepartmentRepositoryTest {
 
     @Autowired
-    DepartmentRepository departmentRepository;
+    private DepartmentRepository departmentRepository;
 
     @Autowired
-    TestEntityManager entityManager;
+    private TestEntityManager entityManager;
 
     @BeforeEach
     void setUp(){
@@ -33,7 +33,7 @@ public class DepartmentRepositoryTest {
 
     @Test
     public void whenFindById_thenReturnDepartment(){
-        Department department = departmentRepository.findById(3).get();
+        Department department = departmentRepository.findById(1).get();
         assertEquals(department.getDepartmentName(), "Mechanic");
     }
 
