@@ -23,9 +23,9 @@ public class DepartmentRepositoryTest {
     void setUp(){
         Department department = 
                     Department.builder()
-                    .departmentAdress("Gisenyi")
+                    .departmentName("Mechanical")
                     .departmentCode("MECH-010")
-                    .departmentName("Mechanic")
+                    .departmentAdress("Gisenyi")
                     .build();
         
         entityManager.persist(department);
@@ -34,7 +34,7 @@ public class DepartmentRepositoryTest {
     @Test
     public void whenFindById_thenReturnDepartment(){
         Department department = departmentRepository.findById(1).get();
-        assertEquals(department.getDepartmentName(), "Mechanic");
+        assertEquals(department.getDepartmentName(), "Mechanical");
     }
 
 }
