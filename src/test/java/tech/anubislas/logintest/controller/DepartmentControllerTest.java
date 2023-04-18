@@ -48,8 +48,7 @@ class DepartmentControllerTest {
         Mockito.when(departmentService.saveDepartment(InputDepartment))
                 .thenReturn(department);
 
-        mockMvc.perform(MockMvcRequestBuilders.post = MockMvcRequestBuilders.post();
-        post("/departments")
+        mockMvc.perform(MockMvcRequestBuilders.post("/departments")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("    {\n" +
                         "        \"departmentName\": \"Network\",\n" +
